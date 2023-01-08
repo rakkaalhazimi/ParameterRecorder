@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{{ url_for('auth.register') }}" method="post">
+  <label>Email:</label>
+  <input type="text" name="email">
+
+  <label>Password:</label>
+  <input type="password" name="password">
+
+  <label>Confirm Password:</label>
+  <input type="password" name="confirm_password">
+  
+  <input type="submit" value="Login">
+</form>
+{% endblock content %}
