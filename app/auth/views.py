@@ -24,9 +24,11 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        user = User(email=email, password=password)
+        user = db.session.execute(
+            db.select(User)
+              .where(User.email == email and User.password == password)).one()
         
-        if login_user(user):
+        if login_user(user[0]):
             flash("Login success")
             return redirect(url_for("base.home"))
 
