@@ -1,9 +1,12 @@
+from datetime import datetime
+
 from flask_login import UserMixin
+from pony import orm
 
 from app import db
 
 
-class User(db.Model, UserMixin):
-    id = db.Column(db.Integer(), primary_key=True, autoincrement=True)
-    email = db.Column(db.String(255), nullable=False, unique=True)
-    password = db.Column(db.String(255), nullable=False)
+class User(db.Entity, UserMixin):
+    email = orm.Required(str, unique=True)
+    password = orm.Required(str)
+    last_login = orm.Optional(datetime)

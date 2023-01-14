@@ -8,6 +8,8 @@ class Config(object):
     TESTING = False
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'jdlfjds7834kjfksdfhdsds'
 
-    DATABASE_NAME = "index.db"
-    SQLALCHEMY_DATABASE_URI = f"sqlite:///{DATABASE_NAME}"
-    SQLALCHEMY_TRACK_MODIFICATIONS = False
+    PONY = {
+        'provider': 'sqlite',
+        'filename': 'index.db',
+        'create_db': True
+    }

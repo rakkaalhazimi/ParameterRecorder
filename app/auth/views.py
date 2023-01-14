@@ -1,8 +1,10 @@
 from flask import Blueprint, request, redirect, url_for, flash, render_template
 from flask_login import login_user, logout_user
+from pony import orm
 
 from app import login_manager
-from app.auth.models import db, User
+from app.auth.models import User
+from app.auth.services import validate_registration
 
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
@@ -18,12 +20,11 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        user = db.session.execute(
-            db.select(User)
-              .where(User.email == email and User.password == password)).one()
+        user = User.get(email=email, password=password)
         
-        if login_user(user[0]):
+        if user:
             flash("Login success")
+            login_user(user)
             return redirect(url_for("base.home"))
 
         return redirect(url_for("auth.login"))
@@ -40,12 +41,10 @@ def register():
         password = request.form["password"]
         confirm_password = request.form["confirm_password"]
 
-        if password == confirm_password:
-            new_user = User(email=email, password=password)
-            db.session.add(new_user)
-            db.session.commit()
+        is_valid = validate_registration(email, password, confirm_password)
+
+        if is_valid:
             flash("Register success")
-        
         else:
             flash("Register failed")
         
@@ -62,7 +61,7 @@ def logout():
 @login_manager.user_loader
 def load_user(user_id):
     print(f"User id: {user_id}")
-    return User.query.get(int(user_id))
+    return User.get(id=user_id)
 
 
 @login_manager.unauthorized_handler
