@@ -24,9 +24,8 @@ Minimal starter for simple Flask project.
 ## Additional Notes
 - The environment is in .flaskenv
 - The configuration is in config.py
-- It has `FLASK_SQLALCHEMY` and `FLASK_MIGRATION` installed
+- It has Pony ORM installed
 - It has user models in app/auth/models.py
-- Find how to use `FLASK_SQLALCHEMY` here [link](https://flask-sqlalchemy.palletsprojects.com/en/2.x/quickstart/)
 
 
 ## Tips
