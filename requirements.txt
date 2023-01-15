@@ -3,3 +3,4 @@ Flask-Login==0.6.2
 Flask-Migrate==3.1.0
 pony==0.7.16
 python-dotenv==0.19.2
+pytz==2022.1

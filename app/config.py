@@ -1,6 +1,8 @@
 import os
 from pathlib import Path
 
+from pytz import timezone
+
 base_dir = Path(__file__).resolve().parent.parent
 
 class Config(object):
@@ -13,3 +15,5 @@ class Config(object):
         'filename': 'index.db',
         'create_db': True
     }
+
+    TIMEZONE = timezone("Asia/Jakarta")

@@ -1,6 +1,5 @@
 from flask import Blueprint, request, redirect, url_for, flash, render_template
 from flask_login import login_user, logout_user
-from pony import orm
 
 from app import login_manager
 from app.auth.models import User
