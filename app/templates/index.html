@@ -1,4 +1,12 @@
 {% extends "base.html" %}
 
 {% block content %}
+<h1>Parameter Recorder</h1>
+
+<p>Your Projects: </p>
+<a href="{{ url_for('base.create_project') }}">Create project</a>
+
+{% for project in projects %}
+  <p>{{ project }}</p>
+{% endfor %}
 {% endblock content %}
