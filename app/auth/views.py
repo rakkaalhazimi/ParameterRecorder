@@ -2,7 +2,7 @@ from flask import Blueprint, request, redirect, url_for, flash, render_template
 from flask_login import login_user, logout_user
 
 from app import login_manager
-from app.auth.models import User
+from app.auth import models
 from app.auth.services import validate_registration
 
 
@@ -18,7 +18,7 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        user = User.get(email=email, password=password)
+        user = models.User.get(email=email, password=password)
         
         if user:
             flash("Login success")
@@ -57,8 +57,7 @@ def logout():
 
 @login_manager.user_loader
 def load_user(user_id):
-    print(f"User id: {user_id}")
-    return User.get(id=user_id)
+    return models.User.get(id=user_id)
 
 
 @login_manager.unauthorized_handler
