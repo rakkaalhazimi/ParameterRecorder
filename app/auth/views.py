@@ -3,7 +3,7 @@ from flask_login import login_user, logout_user
 
 from app import login_manager
 from app.auth import models
-from app.auth.services import validate_registration
+from app.auth import services
 
 
 auth = Blueprint("auth", __name__, url_prefix="/auth")
@@ -38,10 +38,11 @@ def register():
         password = request.form["password"]
         confirm_password = request.form["confirm_password"]
 
-        is_valid = validate_registration(email, password, confirm_password)
+        is_valid = services.validate_registration(email, password, confirm_password)
 
         if is_valid:
             flash("Register success")
+            services.add_user(email, password)
         else:
             flash("Register failed")
         
