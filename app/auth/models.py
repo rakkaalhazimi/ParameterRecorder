@@ -14,3 +14,4 @@ class User(db.Entity, UserMixin):
     is_admin = orm.Optional(bool, default=False)
     created_at = orm.Required(
         datetime, default=datetime.now(app.config.get("TIMEZONE")))
+    projects = orm.Set("Projects")

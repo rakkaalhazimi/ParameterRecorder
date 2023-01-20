@@ -1,11 +1,13 @@
 from pony import orm
 
 from app import db
+from app.auth.models import User
 
 
 class Projects(db.Entity):
     name = orm.Required(str, max_len=255)
     records = orm.Set("Records")
+    user = orm.Required(User)   
 
 
 class Records(db.Entity):
