@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, redirect, url_for, flash
-from flask_login import login_required
+from flask_login import login_required, current_user
 from pony import orm
 
 from app.base import models, services
@@ -21,8 +21,7 @@ def create_project():
         project_name = request.form["name"]
         
         if project_name.strip():
-            models.Projects(name=project_name)
-            orm.commit()
+            services.add_project(current_user=current_user, name=project_name)
             flash("Project created")
             return redirect(url_for("base.home"))
         
