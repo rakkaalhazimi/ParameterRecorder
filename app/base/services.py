@@ -12,9 +12,12 @@ def get_project_by_id(id: int):
 def add_project(current_user: int, name: str):
     Projects(name=name, user=current_user)
     orm.commit()
-    return True
 
-def delete_project(id: int):
+def set_project(project: Projects, **attributes):
+    project.set(**attributes)
+    orm.commit()
+
+def remove_project(id: int):
     Projects.get(id=id).delete()
     orm.commit()
 
