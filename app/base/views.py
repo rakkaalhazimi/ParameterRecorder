@@ -2,7 +2,7 @@ from flask import Blueprint, render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 from pony import orm
 
-from app.base import models, services
+from app.base import services
 
 
 base = Blueprint("base", __name__)
@@ -11,7 +11,7 @@ base = Blueprint("base", __name__)
 @base.route("/")
 @login_required
 def home():
-    projects = orm.select(project.name for project in models.Projects)
+    projects = services.get_all_projects()
     return render_template("index.html", projects=projects)
 
 
@@ -32,7 +32,7 @@ def create_project():
 
 @base.route("/projects/update/<int:project_id>", methods=["GET", "POST"])
 def update_project(project_id: int):
-    project = models.Projects.get(id=project_id)
+    project = services.get_project_by_id(id=project_id)
     context = {
         "id":project_id, 
         "name": project.name
