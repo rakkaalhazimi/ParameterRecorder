@@ -6,7 +6,17 @@
 <p>Your Projects: </p>
 <a href="{{ url_for('base.create_project') }}">Create project</a>
 
-{% for project in projects %}
-  <p>{{ project }}</p>
-{% endfor %}
+<table>
+  <thead>
+    <th>Name</th>
+  </thead>
+  <tbody>
+    {% for project in projects %}
+      <tr>
+        <td>{{ project.name }}</td>
+        <td><a href="{{ url_for('base.update_project', project_id=project.id) }}">Edit</a></td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock content %}
