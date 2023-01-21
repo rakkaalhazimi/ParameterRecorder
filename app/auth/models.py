@@ -13,5 +13,5 @@ class User(db.Entity, UserMixin):
     last_login = orm.Optional(datetime)
     is_admin = orm.Optional(bool, default=False)
     created_at = orm.Required(
-        datetime, default=datetime.now(app.config.get("TIMEZONE")))
+        datetime, default=datetime.utcnow())
     projects = orm.Set("Projects")
