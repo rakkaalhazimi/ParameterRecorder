@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Parameter Recorder</h1>
+
+<p>Project: {{ context['name'] }}</p>
+<a href="{{ url_for('base.home') }}">Add record</a>
+
+<table>
+  <thead>
+    <th>Name</th>
+  </thead>
+  <tbody>
+    {% for record in context['records'] %}
+      <tr>
+        <td>{{ record.name }}</td>
+        <!-- <td><a href="{{ url_for('base.update_project', project_id=project.id) }}">Edit</a></td> -->
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

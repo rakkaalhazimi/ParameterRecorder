@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content %}
+<p>Are you sure want to delete project '{{ context['name'] }}'?</p>
+
+<form action="{{ url_for('base.delete_project', project_id=context['id']) }}" method="post">
+  <input type="submit" value="Yes">
+</form>
+<a href="{{ url_for('base.home') }}">no</a>
+{% endblock content %}
