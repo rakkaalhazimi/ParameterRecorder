@@ -30,6 +30,19 @@ def create_project():
     return render_template("project_create.html")
 
 
+@base.route("/projects/<int:project_id>", methods=["GET", "POST"])
+def view_project(project_id: int):
+    project = services.get_project_by_id(id=project_id)
+    records = services.get_records_by_project(project_id=project_id)
+    context = {
+        "id":project_id, 
+        "name": project.name,
+        "records": records
+    }
+
+    return render_template("project_view.html", context=context)
+
+
 @base.route("/projects/update/<int:project_id>", methods=["GET", "POST"])
 def update_project(project_id: int):
     project = services.get_project_by_id(id=project_id)
@@ -50,3 +63,18 @@ def update_project(project_id: int):
         flash("failed to update project")
     
     return render_template("project_update.html", context=context)
+
+
+@base.route("/projects/delete/<int:project_id>", methods=["GET", "POST"])
+def delete_project(project_id: int):
+    if request.method == "POST":
+        services.delete_project(id=project_id)
+        return redirect(url_for("base.home"))
+
+    project = services.get_project_by_id(id=project_id)
+    context = {
+        "id":project_id,
+        "name": project.name,
+    }
+
+    return render_template("project_delete.html", context=context)
