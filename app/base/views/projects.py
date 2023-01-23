@@ -1,6 +1,5 @@
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
-from pony import orm
 
 from app.base.views import base
 from app.base import services
