@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+
+{% block content %}
+<h1>Parameter Recorder</h1>
+
+<p>Record: {{ context['name'] }}</p>
+
+<p>Parameters</p>
+<table>
+  <thead>
+    <th>Key</th>
+    <th>Value</th>
+  </thead>
+  <tbody>
+    {% for parameter in context['parameters'] %}
+      <tr>
+        <td>{{ parameter.key }}</td>
+        <td>{{ parameter.value }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<p>Results</p>
+<table>
+  <thead>
+    <th>Key</th>
+    <th>Value</th>
+  </thead>
+  <tbody>
+    {% for result in context['results'] %}
+      <tr>
+        <td>{{ result.key }}</td>
+        <td>{{ result.value }}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock content %}

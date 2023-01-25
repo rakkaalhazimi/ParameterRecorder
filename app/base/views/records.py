@@ -41,15 +41,18 @@ def create_record(project_id: int):
     return render_template("record_create.html", context=context)
 
 
-@base.route("/records/<int:record_id>", methods=["GET", "POST"])
+@base.route("/projects/<int:project_id>/records/<int:record_id>", methods=["GET", "POST"])
 @login_required
-def view_record(record_id: int):
-    project = services.get_project_by_id(id=record_id)
-    records = services.get_records_by_project(record_id=record_id)
+def view_record(project_id: int, record_id: int):
+    record = services.get_record_by_id(record_id=record_id)
+    parameters = services.get_parameters_by_record(record_id=record_id)
+    results = services.get_results_by_record(record_id=record_id)
+
     context = {
         "id":record_id, 
-        "name": project.name,
-        "records": records
+        "name": record.name,
+        "parameters": parameters,
+        "results": results
     }
 
     return render_template("record_view.html", context=context)
