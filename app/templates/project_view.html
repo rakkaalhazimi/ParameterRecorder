@@ -14,7 +14,8 @@
     {% for record in context['records'] %}
       <tr>
         <td>{{ record.name }}</td>
-        <td><a href="{{ url_for('base.home') }}">Edit</a></td>
+        <td><a href="{{ url_for('base.view_record', project_id=context['id'], record_id=record.id) }}">View</a></td>
+        <td><a href="{{ url_for('base.update_record', record_id=record.id) }}">Edit</a></td>
       </tr>
     {% endfor %}
   </tbody>
