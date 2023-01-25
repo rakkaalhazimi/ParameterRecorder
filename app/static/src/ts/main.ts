@@ -19,6 +19,12 @@ function addForm(event: Event): void {
         currentObj = currentObj.parentElement
     }
     let lastInputRow: HTMLElement = currentObj.querySelector("tr:nth-last-child(2)").cloneNode(true) as HTMLElement
-    let incrementedInputRow: HTMLElement = incrementInputName(lastInputRow)
-    currentObj.insertBefore(incrementedInputRow, currentObj.children[currentObj.children.length - 1])
+    // let incrementedInputRow: HTMLElement = incrementInputName(lastInputRow)
+    currentObj.insertBefore(lastInputRow, currentObj.children[currentObj.children.length - 1])
+}
+
+function removeInput(event: Event): void {
+    event.preventDefault()
+    let currentObj: HTMLElement = event.target as HTMLElement
+    let parent: HTMLElement = currentObj.parentElement
 }
