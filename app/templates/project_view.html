@@ -4,7 +4,7 @@
 <h1>Parameter Recorder</h1>
 
 <p>Project: {{ context['name'] }}</p>
-<a href="{{ url_for('base.create_record') }}">Add record</a>
+<a href="{{ url_for('base.create_record', project_id=context['id']) }}">Add record</a>
 
 <table>
   <thead>
@@ -14,7 +14,7 @@
     {% for record in context['records'] %}
       <tr>
         <td>{{ record.name }}</td>
-        <!-- <td><a href="{{ url_for('base.update_project', project_id=project.id) }}">Edit</a></td> -->
+        <td><a href="{{ url_for('base.home') }}">Edit</a></td>
       </tr>
     {% endfor %}
   </tbody>

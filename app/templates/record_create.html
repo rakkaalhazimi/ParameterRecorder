@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block content %}
-<form action="{{ url_for('base.create_record') }}" method="post">
+<form action="{{ url_for('base.create_record', project_id=context['id']) }}" method="post">
   <label>Record Name:</label>
   <input type="text" name="name">
 
@@ -13,12 +13,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" name="parameter_key_1"></td>
-        <td><input type="text" name="parameter_value_1"></td>
-        <td><input type="checkbox" name="parameter_delete_1"></td>
+        <td><input type="text" name="parameter_key" required></td>
+        <td><input type="text" name="parameter_value" required></td>
+        <td><button onclick="removeInput(event)">x</button></td>
       </tr>
       <tr>
-        <input type="hidden" name="total_parameter" value="1">
         <td>Add parameter <button onclick="addForm(event)">+</button></td>
       </tr>
     </tbody>
@@ -32,12 +31,11 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" name="result_key_1"></td>
-        <td><input type="text" name="result_value_1"></td>
-        <td><input type="checkbox" name="result_delete_1"></td>
+        <td><input type="text" name="result_key" required></td>
+        <td><input type="text" name="result_value" required></td>
+        <td><button onclick="removeInput(event)">x</button></td>
       </tr>
       <tr>
-        <input type="hidden" name="total_result" value="1">
         <td>Add result <button onclick="addForm(event)">+</button></td>
       </tr>
     </tbody>

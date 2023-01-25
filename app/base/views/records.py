@@ -6,25 +6,39 @@ from app.base import services
 
 
 
-@base.route("/records/create", methods=["GET", "POST"])
+@base.route("/projects/<int:project_id>/records/create", methods=["GET", "POST"])
 @login_required
-def create_record():
+def create_record(project_id: int):
+    context = {
+        "id": project_id
+    }
+
     if request.method == "POST":
+        project = services.get_project_by_id(id=project_id)
         record_name = request.form["name"]
-        # parameters = request.form["parameter_key"]
-        # results = request.form["result_key"]
 
-        # print(record_name, parameters, results)
-        print(request.form.keys())
-        
-        # if record_name.strip():
-        #     services.add_project(current_user=current_user, name=record_name)
-        #     flash("Record created")
-        #     return redirect(url_for("base.home"))
-        
-        # flash("failed to create record")
+        if record_name.strip():
+            record = services.add_record(name=record_name, project=project)
+            
+            for key, value in zip(
+                request.form.getlist("parameter_key"),
+                request.form.getlist("parameter_value")
+            ):
+                services.add_parameter(key=key, value=value, record=record)
 
-    return render_template("record_create.html")
+
+            for key, value in zip(
+                request.form.getlist("result_key"),
+                request.form.getlist("result_value")
+            ):
+                services.add_result(key=key, value=value, record=record)
+
+            flash("Record created")
+            return redirect(url_for("base.home"))
+        
+        flash("failed to create record")
+
+    return render_template("record_create.html", context=context)
 
 
 @base.route("/records/<int:record_id>", methods=["GET", "POST"])
