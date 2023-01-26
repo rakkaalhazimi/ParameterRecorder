@@ -58,24 +58,51 @@ def view_record(project_id: int, record_id: int):
     return render_template("record_view.html", context=context)
 
 
-@base.route("/records/update/<int:record_id>", methods=["GET", "POST"])
+@base.route("/projects/<int:project_id>/records/update/<int:record_id>", methods=["GET", "POST"])
 @login_required
-def update_record(record_id: int):
-    project = services.get_project_by_id(id=record_id)
+def update_record(project_id: int, record_id: int):
+    record = services.get_record_by_id(record_id=record_id)
+    parameters = services.get_parameters_by_record(record_id=record_id)
+    results = services.get_results_by_record(record_id=record_id)
+
     context = {
-        "id":record_id, 
-        "name": project.name
+        "project_id": project_id,
+        "record_id": record_id,
+        "name": record.name,
+        "parameters": parameters,
+        "results": results
     }
 
     if request.method == "POST":
-        project_name = request.form["name"]
+        record_name = request.form["name"]
 
-        if project_name.strip():
-            services.set_project(project, name=project_name)
-            flash("Project updated")
-            return redirect(url_for("base.home"))
+        if record.name != record_name and record_name.strip():
+            services.set_record(record, name=record_name)
+
+        for key, value, id_ in zip(
+            request.form.getlist("parameter_key"),
+            request.form.getlist("parameter_value"),
+            request.form.getlist("parameter_id"),
+        ):
+            print("Id is: ", id_)
+            if id_:
+                parameter = services.get_parameter_by_id(id_)
+                services.set_parameter(parameter=parameter, key=key, value=value)
+
+
+        for key, value, id_ in zip(
+            request.form.getlist("result_key"),
+            request.form.getlist("result_value"),
+            request.form.getlist("result_id")
+        ):
+            if id_:
+                result = services.get_result_by_id(id_)
+                services.set_result(result, key=key, value=value)
+
+        flash("Record updated")
+        return redirect(url_for("base.view_project", project_id=project_id))
         
-        flash("failed to update project")
+    flash("failed to update project")
     
     return render_template("record_update.html", context=context)
 

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+
+{% block content %}
+<form action="{{ url_for('base.update_record', project_id=context['project_id'], record_id=context['record_id']) }}" method="post">
+  <label>Record Name:</label>
+  <input type="text" name="name" value="{{ context['name'] }}">
+
+  <p>Parameter</p>
+  <table>
+    <thead>
+      <th>Key</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      {% for parameter in context['parameters'] %}
+      <tr>
+        <td><input type="text" name="parameter_key" value="{{ parameter.key }}" required></td>
+        <td><input type="text" name="parameter_value" value="{{ parameter.value }}" required></td>
+        <td><input type="hidden" name="parameter_id" value="{{ parameter.id }}"></td>
+        <td><button onclick="removeInput(event)">x</button></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Add parameter <button onclick="addForm(event)">+</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p>Result</p>
+  <table>
+    <thead>
+      <th>Key</th>
+      <th>Value</th>
+    </thead>
+    <tbody>
+      {% for result in context['results'] %}
+      <tr>
+        <td><input type="text" name="result_key" value="{{ result.key }}" required></td>
+        <td><input type="text" name="result_value" value="{{ result.value }}" required></td>
+        <td><input type="hidden" name="result_id" value="{{ result.id }}"></td>
+        <td><button onclick="removeInput(event)">x</button></td>
+      </tr>
+      {% endfor %}
+      <tr>
+        <td>Add result <button onclick="addForm(event)">+</button></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <input type="submit" value="Update">
+</form>
+{% endblock content %}
