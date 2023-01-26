@@ -38,6 +38,10 @@ def get_records_by_project(project_id: int) -> Iterable:
 def get_record_by_id(record_id: int) -> Records:
     return Records.get(id=record_id)
 
+def set_record(record: Records, **attributes):
+    record.set(**attributes)
+    orm.commit()
+
 
 # Parameters
 def add_parameter(key: str, value: str, record: Records) -> Parameters:
@@ -45,8 +49,15 @@ def add_parameter(key: str, value: str, record: Records) -> Parameters:
     orm.commit()
     return parameter
 
+def get_parameter_by_id(parameter_id: int):
+    return Parameters.get(id=parameter_id)
+
 def get_parameters_by_record(record_id: int) -> Iterable:
     return Parameters.select(lambda parameter: parameter.record.id == record_id)
+
+def set_parameter(parameter: Parameters, **attributes):
+    parameter.set(**attributes)
+    orm.commit()
 
 
 # Results
@@ -55,5 +66,12 @@ def add_result(key: str, value: str, record: Records) -> Parameters:
     orm.commit()
     return result
 
+def get_result_by_id(result_id: int):
+    return Results.get(id=result_id)
+
 def get_results_by_record(record_id: int) -> Iterable:
     return Results.select(lambda result: result.record.id == record_id)
+
+def set_result(result: Results, **attributes):
+    result.set(**attributes)
+    orm.commit()
