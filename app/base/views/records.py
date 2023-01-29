@@ -107,17 +107,18 @@ def update_record(project_id: int, record_id: int):
     return render_template("record_update.html", context=context)
 
 
-@base.route("/records/delete/<int:record_id>", methods=["GET", "POST"])
+@base.route("/projects/<int:project_id>/records/delete/<int:record_id>", methods=["GET", "POST"])
 @login_required
-def delete_record(record_id: int):
+def delete_record(project_id: int, record_id: int):
     if request.method == "POST":
-        services.remove_project(id=record_id)
+        services.remove_record(id=record_id)
         return redirect(url_for("base.home"))
 
-    project = services.get_project_by_id(id=record_id)
+    record = services.get_record_by_id(record_id=record_id)
     context = {
-        "id":record_id,
-        "name": project.name,
+        "project_id": project_id,
+        "record_id": record_id,
+        "name": record.name,
     }
 
     return render_template("record_delete.html", context=context)

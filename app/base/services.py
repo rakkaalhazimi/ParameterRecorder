@@ -42,6 +42,10 @@ def set_record(record: Records, **attributes):
     record.set(**attributes)
     orm.commit()
 
+def remove_record(id: int):
+    Records.get(id=id).delete()
+    orm.commit()
+
 
 # Parameters
 def add_parameter(key: str, value: str, record: Records) -> Parameters:
