@@ -24,14 +24,16 @@ def create_record(project_id: int):
                 request.form.getlist("parameter_key"),
                 request.form.getlist("parameter_value")
             ):
-                services.add_parameter(key=key, value=value, record=record)
+                if key.strip() and value.strip():
+                    services.add_parameter(key=key, value=value, record=record)
 
 
             for key, value in zip(
                 request.form.getlist("result_key"),
                 request.form.getlist("result_value")
             ):
-                services.add_result(key=key, value=value, record=record)
+                if key.strip() and value.strip():
+                    services.add_result(key=key, value=value, record=record)
 
             flash("Record created")
             return redirect(url_for("base.home"))
