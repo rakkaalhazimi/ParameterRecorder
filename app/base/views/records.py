@@ -36,7 +36,7 @@ def create_record(project_id: int):
                     services.add_result(key=key, value=value, record=record)
 
             flash("Record created")
-            return redirect(url_for("base.home"))
+            return redirect(url_for("base.view_project", project_id=project_id))
         
         flash("failed to create record")
 
@@ -114,7 +114,7 @@ def update_record(project_id: int, record_id: int):
 def delete_record(project_id: int, record_id: int):
     if request.method == "POST":
         services.remove_record(id=record_id)
-        return redirect(url_for("base.home"))
+        return redirect(url_for("base.view_project", project_id=project_id))
 
     record = services.get_record_by_id(record_id=record_id)
     context = {

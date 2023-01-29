@@ -6,5 +6,5 @@
 <form action="{{ url_for('base.delete_record', project_id=context['project_id'], record_id=context['record_id']) }}" method="post">
   <input type="submit" value="Yes">
 </form>
-<a href="{{ url_for('base.home') }}">no</a>
+<a href="{{ url_for('base.view_project', project_id=context['project_id']) }}">no</a>
 {% endblock content %}
