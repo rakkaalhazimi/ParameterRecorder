@@ -24,7 +24,7 @@ def create_record(project_id: int):
                 request.form.getlist("parameter_key"),
                 request.form.getlist("parameter_value")
             ):
-                if key.strip() and value.strip():
+                if services.validate_parameter_or_result(key, value):
                     services.add_parameter(key=key, value=value, record=record)
 
 
@@ -32,7 +32,7 @@ def create_record(project_id: int):
                 request.form.getlist("result_key"),
                 request.form.getlist("result_value")
             ):
-                if key.strip() and value.strip():
+                if services.validate_parameter_or_result(key, value):
                     services.add_result(key=key, value=value, record=record)
 
             flash("Record created")

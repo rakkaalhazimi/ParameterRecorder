@@ -79,3 +79,11 @@ def get_results_by_record(record_id: int) -> Iterable:
 def set_result(result: Results, **attributes):
     result.set(**attributes)
     orm.commit()
+
+
+
+# Validators
+def validate_parameter_or_result(key: str, value: str) -> bool:
+    if key.strip() and value.strip():
+        return True
+    return False
