@@ -1,3 +1,5 @@
+from itertools import zip_longest
+
 from flask import render_template, request, redirect, url_for, flash
 from flask_login import login_required, current_user
 
@@ -81,18 +83,21 @@ def update_record(project_id: int, record_id: int):
         if record.name != record_name and record_name.strip():
             services.set_record(record, name=record_name)
 
-        for key, value, id_ in zip(
+        for key, value, id_ in zip_longest(
             request.form.getlist("parameter_key"),
             request.form.getlist("parameter_value"),
             request.form.getlist("parameter_id"),
         ):
-            print("Id is: ", id_)
+            print("Id: ", id_)
             if id_:
                 parameter = services.get_parameter_by_id(id_)
                 services.set_parameter(parameter=parameter, key=key, value=value)
+            
+            elif services.validate_parameter_or_result(key, value):
+                services.add_parameter(key, value, record)
 
 
-        for key, value, id_ in zip(
+        for key, value, id_ in zip_longest(
             request.form.getlist("result_key"),
             request.form.getlist("result_value"),
             request.form.getlist("result_id")
@@ -100,6 +105,9 @@ def update_record(project_id: int, record_id: int):
             if id_:
                 result = services.get_result_by_id(id_)
                 services.set_result(result, key=key, value=value)
+            
+            elif services.validate_parameter_or_result(key, value):
+                services.add_result(key, value, record)
 
         flash("Record updated")
         return redirect(url_for("base.view_project", project_id=project_id))
