@@ -11,10 +11,14 @@ db = orm.Database()
 login_manager = LoginManager()
 
 
+def clear_database():
+    db.drop_all_tables()
+    db.create_tables()
+
 def create_app(config: object = Config):
     # Flask application
     app = Flask(__name__)
-    app.config.from_object(Config)
+    app.config.from_object(config)
     Pony(app)
 
     # Blueprints
@@ -24,8 +28,9 @@ def create_app(config: object = Config):
     app.register_blueprint(auth)
 
     # Pony orm
-    db.bind(**app.config["PONY"])
-    db.generate_mapping(create_tables=True)
+    if not db.provider_name:
+        db.bind(**app.config["PONY"])
+        db.generate_mapping(create_tables=True)
 
     # Flask login
     login_manager.init_app(app)
