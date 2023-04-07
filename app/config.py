@@ -17,3 +17,13 @@ class Config(object):
     }
 
     TIMEZONE = timezone("Asia/Jakarta")
+
+
+class TestConfig(Config):
+    DEBUG = True
+    TESTING = True
+    PONY = {
+        "provider": "sqlite",
+        "filename": "test_index.db",
+        "create_db": True
+    }
