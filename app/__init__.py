@@ -3,27 +3,31 @@ from flask_login import LoginManager
 from pony import orm
 from pony.flask import Pony
 
-from app import config
+from app.config import Config
 
 
-# Flask application
-app = Flask(__name__)
-app.config.from_object(config.Config)
-
-# Pony orm
+# Extension
 db = orm.Database()
-db.bind(**app.config["PONY"])
-
-# Flask login
 login_manager = LoginManager()
-login_manager.init_app(app)
-
-# Blueprints
-from app.base.views import base
-from app.auth.views import auth
-app.register_blueprint(base)
-app.register_blueprint(auth)
 
 
-db.generate_mapping(create_tables=True)
-Pony(app)
+def create_app(config: object = Config):
+    # Flask application
+    app = Flask(__name__)
+    app.config.from_object(Config)
+    Pony(app)
+
+    # Blueprints
+    from app.base.views import base
+    from app.auth.views import auth
+    app.register_blueprint(base)
+    app.register_blueprint(auth)
+
+    # Pony orm
+    db.bind(**app.config["PONY"])
+    db.generate_mapping(create_tables=True)
+
+    # Flask login
+    login_manager.init_app(app)
+
+    return app

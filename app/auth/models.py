@@ -4,7 +4,7 @@ from datetime import datetime
 from flask_login import UserMixin
 from pony import orm
 
-from app import app, db
+from app import db
 
 
 class User(db.Entity, UserMixin):
