@@ -1,11 +1,35 @@
+import re
+
 from pony import orm
 from werkzeug.security import generate_password_hash, check_password_hash
 
 from .models import User
 
 
+def validate_email(email: str) -> bool:
+    address = re.compile(
+    r"""
+    \b
+    [\w\d.+\-_]+            # Username
+    @                       # (add symbol)
+    ([\w\d.]+\.)+           # Domain name prefix
+    (com|edu|org|co./id)    # Top-level domains
+    \b
+    """,
+    re.VERBOSE)
+
+    found = address.match(email)
+    if found:
+        return True
+    else:
+        return False
+
 def validate_registration(email, password, confirm_password):
     if password != confirm_password:
+        return False
+
+    email_is_valid = validate_email(email)
+    if not email_is_valid:
         return False
 
     email_is_exists = User.get(email=email)

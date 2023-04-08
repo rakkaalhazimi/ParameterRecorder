@@ -59,7 +59,7 @@ def test_register_user(auth: AuthActions):
     WHEN user register new account successfully
     THEN user have new account
     """
-    email = "test"
+    email = "test_register@gmail.com"
     password = "test"
     auth.register(email=email, password=password, confirm_password=password)
     user = services.find_user(email=email)
@@ -72,7 +72,7 @@ def test_hash_user_password(auth: AuthActions):
     WHEN user finished the registration form
     THEN user password must be stored in hashed format
     """
-    email = "test"
+    email = "test_hash@gmail.com"
     password = "test"
     auth.register(email=email, password=password, confirm_password=password)
     user = services.find_user(email=email)
