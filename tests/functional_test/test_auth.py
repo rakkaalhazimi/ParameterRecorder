@@ -76,4 +76,4 @@ def test_hash_user_password(auth: AuthActions):
     password = "test"
     auth.register(email=email, password=password, confirm_password=password)
     user = services.find_user(email=email)
-    assert services.check_password_hash(user.password, password)
+    assert services.check_user_password(user.password, password)
