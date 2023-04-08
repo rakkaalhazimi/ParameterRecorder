@@ -12,7 +12,7 @@ login_manager = LoginManager()
 
 
 def clear_database():
-    db.drop_all_tables()
+    db.drop_all_tables(with_all_data=True)
     db.create_tables()
 
 def create_app(config: object = Config):

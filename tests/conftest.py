@@ -8,7 +8,7 @@ from app.config import TestConfig
 def test_app():
     app = create_app(TestConfig)
     yield app
-    clear_database
+    clear_database()
 
 @pytest.fixture
 def client(test_app):

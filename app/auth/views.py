@@ -13,13 +13,13 @@ auth = Blueprint("auth", __name__, url_prefix="/auth")
 def login():
     if request.method == "GET":
         return render_template("login.html")
-    
+
     if request.method == "POST":
         email = request.form["email"]
         password = request.form["password"]
 
         user = models.User.get(email=email, password=password)
-        
+
         if user:
             flash("Login success")
             login_user(user)
@@ -45,7 +45,7 @@ def register():
             services.add_user(email, password)
         else:
             flash("Register failed")
-        
+
         return redirect(url_for("auth.login"))
 
 
