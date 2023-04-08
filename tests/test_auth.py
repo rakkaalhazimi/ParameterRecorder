@@ -43,18 +43,13 @@ def test_redirect_login(client: FlaskClient):
     assert "/login" in response.request.path
 
 
-def test_redirect_login_after_logout(client: FlaskClient, auth: AuthActions):
+def test_redirect_login_after_logout(auth: AuthActions):
     """
     GIVEN user have logged in
     WHEN user press logout button
     THEN redirect user to login page
     """
-    email = "test"
-    password = "test"
-    with client:
-        auth.register(email=email, password=password, confirm_password=password)
-        auth.login(email=email, password=password)
-        response = auth.logout()
+    response = auth.logout()
     assert "/login" in response.request.path
 
 
