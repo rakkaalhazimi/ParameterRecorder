@@ -1,14 +1,45 @@
 {% extends "base.html" %}
 
-{% block content %}
-<form action="{{ url_for('auth.login') }}" method="post">
-  <label>Email:</label>
-  <input type="text" name="email">
+{% block script %}
+<script type="module">
+  import Box from "{{ url_for('static', filename='components/boxes/centered_box.js') }}"
+  import Button from "{{ url_for('static', filename='components/buttons/submit_button.js') }}"
+  import Form from "{{ url_for('static', filename='components/forms/glass_form.js') }}"
+  import Field from "{{ url_for('static', filename='components/fields/levitate_field.js') }}"
+  const { createApp, ref } = Vue
 
-  <label>Password:</label>
-  <input type="password" name="password">
-  
-  <input type="submit" value="Login">
-</form>
-<p>Don't have an account? register <a href="{{ url_for('auth.register') }}">here</a></p>
-{% endblock content %}
+  const App = {
+      setup() {
+          let message = ref("hello vue")
+          return {message}
+      },
+
+      components: {
+        "Box": Box,
+        "Button": Button,
+        "Form": Form,
+        "Field": Field
+      },
+
+      delimiters: ["[[", "]]"],
+  }
+
+  let template = /*html*/`
+    <Box>
+      <Form action="{{ url_for('auth.login') }}" method="post">
+
+        <Field type="text" name="email" label="Email"></Field>
+        <Field type="text" name="password" label="Password"></Field>
+
+        <Button value="Login"></Button>
+      </Form>
+      <p>Don't have an account? register <a href="{{ url_for('auth.register') }}">here</a></p>
+    </Box>
+  `
+
+  App.template = template
+
+  let app = createApp(App)
+  app.mount("#app")
+</script>
+{% endblock script %}
