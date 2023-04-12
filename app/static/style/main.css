@@ -78,11 +78,34 @@
     border-radius: 2px;
 }
 
+.field__wrapper--focus {
+    border: 1px solid hsl(221, 100%, 36%);
+    box-shadow: 0 0 2px hsl(221, 100%, 36%);
+}
+
 .field__label {
     /* Label is inline by default, make it inline-block to apply margin */
     display: inline-block;
     margin-bottom: .1rem;
     color: hsl(0, 0%, 10%);
+}
+
+.field__label--focus {
+    color:hsl(221, 100%, 36%);
+}
+
+.field__icon {
+    margin: 0 .5rem;
+    height: 1rem;
+    width: 1rem;
+}
+
+.field__icon-wrapper {
+    color: hsl(0, 0%, 70%);
+}
+
+.field__icon-wrapper--focus {
+    color: hsl(221, 100%, 36%);
 }
 
 .bg-main {
@@ -96,15 +119,4 @@
 
 path {
     fill: currentColor;
-}
-
-.field__icon {
-    margin: 0 .5rem;
-    height: 1rem;
-    width: 1rem;
-    color: hsl(0, 0%, 70%);
-}
-
-.field__icon-wrapper {
-
 }
