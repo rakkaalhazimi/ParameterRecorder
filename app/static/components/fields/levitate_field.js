@@ -3,7 +3,6 @@ const {ref, reactive} = Vue
 export default {
     props: {
         type: String,
-        value: String,
         name: String,
         label: String,
     },
@@ -34,7 +33,6 @@ export default {
                     @focusin="fieldFocusIn"
                     @focusout="fieldFocusOut"
                     :type="type"
-                    :value="value"
                     :name="name"
                     class="field__input"
                 />
