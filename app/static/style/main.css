@@ -79,6 +79,9 @@
 }
 
 .field__label {
+    /* Label is inline by default, make it inline-block to apply margin */
+    display: inline-block;
+    margin-bottom: .1rem;
     color: hsl(0, 0%, 10%);
 }
 
