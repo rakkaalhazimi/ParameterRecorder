@@ -1,29 +1,103 @@
 * {
     padding: 0;
     margin: 0;
+    box-sizing: border-box;
+    font-family: Verdana, Tahoma, sans-serif;
 }
 
-.glass-form {
-    display: inline-block;
-    padding: 1rem;
-    width: auto;
-    border: 1px solid hsl(221, 100%, 36%);
-}
-
-.btn {
-    border: none;
-}
-
-.submit-btn {
-    padding: .5rem;
-    background-color: hsl(221, 100%, 36%);
-    color: hsl(0, 0%, 90%);
-}
-
-.center-box {
+.page {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    height: 100vh;
+}
+
+.glass-form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 1rem 2rem;
+    row-gap: 1rem;
+    height: 100%;
+    width: 100%;
+    border: 1px solid hsl(0, 0%, 80%);
+    font-size: .8rem;
+}
+
+.btn {
+    border: none;
+    cursor: pointer;
+}
+
+.submit-btn {
+    padding: .5rem;
+    width: 100%;
+    background-color: hsl(221, 100%, 36%);
+    color: hsl(0, 0%, 90%);
+}
+
+.horizontal-box {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
     width: auto;
+}
+
+.vertical-box {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    width: auto;
+}
+
+.field {
+    padding: .5rem;
+    width: 100%;
+    outline: none;
+    border: none;
+}
+
+.field:focus {
+    /* border: 1px solid hsl(221, 100%, 36%); */
+    /* box-shadow: 0 0 2px hsl(221, 100%, 36%); */
+}
+
+.field-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: auto;
+    width: auto;
+    border: 1px solid hsl(0, 0%, 70%);
+    border-radius: 2px;
+}
+
+.bg-main {
+    background-color: hsl(221, 100%, 36%);
+    color: hsl(0, 0%, 90%);
+}
+
+.text-gray {
+    color: hsl(0, 0%, 10%);
+}
+
+path {
+    fill: currentColor;
+}
+
+.icon {
+    margin: 0 .5rem;
+    height: 1rem;
+    width: 1rem;
+    color: hsl(0, 0%, 70%);
+}
+
+.icon-container {
+
 }

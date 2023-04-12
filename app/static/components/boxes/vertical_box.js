@@ -1,13 +1,14 @@
 export default {
     props: {
-        value: String
+        height: String,
+        width: String
     },
 
     setup(props) {
     },
 
     template: /*html*/`
-        <div class="center-box">
+        <div class="vertical-box" :style="{ height: height + 'rem', width: width + 'rem' }">
             <slot></slot>
         </div>
     `
