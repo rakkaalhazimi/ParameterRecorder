@@ -10,12 +10,12 @@ export default {
     },
 
     template: /*html*/`
-        <div>
-            <label class="field-label">{{ label }}</label>
+        <div class="field">
+            <label class="field__label">{{ label }}</label>
             <br/>
-            <div class="field-container">
-                <input :type="type" :value="value" :name="name" class="field" />
-                <span class="icon-container">
+            <div class="field__wrapper">
+                <input :type="type" :value="value" :name="name" class="field__input" />
+                <span class="field__icon-wrapper">
                     <slot name="icon"></slot>
                 </span>
             </div>
