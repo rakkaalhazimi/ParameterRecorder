@@ -23,11 +23,29 @@ a {
     flex-direction: column;
     justify-content: center;
     padding: 1rem 2rem;
-    row-gap: 1rem;
+    row-gap: 2rem;
     height: 100%;
     width: 100%;
     border: 1px solid hsl(0, 0%, 80%);
+    background-color: hsla(0, 0%, 100%, 0.98);
     font-size: .8rem;
+}
+
+.glass-form > *:first-child,
+.glass-form > *:last-child {
+    margin-top: auto
+}
+
+.form__header-text {
+}
+
+.form__field-wrapper {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+}
+
+.form__register-text {
 }
 
 .form__register-text-link {
@@ -46,6 +64,7 @@ a {
 .submit-btn {
     padding: .5rem;
     width: 100%;
+    border-radius: 2px;
     background-color: hsl(221, 100%, 36%);
     color: hsl(0, 0%, 90%);
 }
