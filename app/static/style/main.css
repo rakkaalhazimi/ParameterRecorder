@@ -30,6 +30,14 @@ a {
     font-size: .8rem;
 }
 
+.form__register-text-link {
+    color: hsl(221, 100%, 36%);
+}
+
+.form__register-text-link:hover {
+    color: hsl(221, 100%, 16%);
+}
+
 .btn {
     border: none;
     cursor: pointer;
@@ -65,6 +73,7 @@ a {
     width: 100%;
     outline: none;
     border: none;
+    color: hsl(0, 0%, 10%);
 }
 
 .field__input--focus {
