@@ -87,6 +87,11 @@ a {
     width: auto;
 }
 
+.login-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
 .field__input {
     padding: .5rem;
     width: 100%;
