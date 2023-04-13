@@ -5,7 +5,6 @@
   import HorizontalBox from "{{ url_for('static', filename='components/boxes/horizontal_box.js') }}"
   import VerticalBox from "{{ url_for('static', filename='components/boxes/vertical_box.js') }}"
   import Button from "{{ url_for('static', filename='components/buttons/submit_button.js') }}"
-  import Form from "{{ url_for('static', filename='components/forms/glass_form.js') }}"
   import Field from "{{ url_for('static', filename='components/fields/levitate_field.js') }}"
   const { createApp, ref } = Vue
 
@@ -19,7 +18,6 @@
         "HorizontalBox": HorizontalBox,
         "VerticalBox": VerticalBox,
         "Button": Button,
-        "Form": Form,
         "Field": Field,
       },
 
@@ -34,7 +32,7 @@
         </VerticalBox>
 
         <VerticalBox height="30" width="20">
-          <Form action="{{ url_for('auth.login') }}" method="post">
+          <form class="form glass-form" action="{{ url_for('auth.login') }}" method="post">
             <h2 class="form__header-text">Sign In</h2>
 
             <div class="form__field-wrapper">
@@ -58,7 +56,7 @@
                 <strong>Sign Up</strong>
               </a>
             </p>
-          </Form>
+          </form>
         </VerticalBox>
 
       </HorizontalBox>
