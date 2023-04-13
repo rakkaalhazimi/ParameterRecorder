@@ -93,6 +93,7 @@ a {
     outline: none;
     border: none;
     color: hsl(0, 0%, 10%);
+    background-color: hsl(0, 0%, 97%);
 }
 
 .field__input--focus {
