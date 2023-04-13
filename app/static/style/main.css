@@ -5,6 +5,11 @@
     font-family: Verdana, Tahoma, sans-serif;
 }
 
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
 .page {
     display: flex;
     flex-direction: column;
