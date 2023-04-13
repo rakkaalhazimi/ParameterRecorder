@@ -25,13 +25,13 @@
   }
 
   let template = /*html*/`
-    <div class="page">
-      <div class="login-box">
+    <div class="login-page">
+      <div class="login-page__login-box">
 
-        <VerticalBox class="bg-main" width="20">
+        <VerticalBox class="bg-main">
         </VerticalBox>
 
-        <VerticalBox height="30" width="20">
+        <VerticalBox>
           <form class="form glass-form" action="{{ url_for('auth.login') }}" method="post">
             <h2 class="form__header-text">Sign In</h2>
 
