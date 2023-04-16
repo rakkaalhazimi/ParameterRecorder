@@ -53,6 +53,7 @@ a {
 
 .glass-form > *:first-child,
 .glass-form > *:last-child {
+    /* Centers top content and Push down bottom content */
     margin-top: auto
 }
 
@@ -174,5 +175,7 @@ a {
 }
 
 path {
+    /* Give color to svg path */
     fill: currentColor;
 }
+
