@@ -2,8 +2,6 @@
 
 {% block script %}
 <script type="module">
-  import HorizontalBox from "{{ url_for('static', filename='components/boxes/horizontal_box.js') }}"
-  import VerticalBox from "{{ url_for('static', filename='components/boxes/vertical_box.js') }}"
   import Button from "{{ url_for('static', filename='components/buttons/submit_button.js') }}"
   import Field from "{{ url_for('static', filename='components/fields/levitate_field.js') }}"
   const { createApp, ref } = Vue
@@ -15,8 +13,6 @@
       },
 
       components: {
-        "HorizontalBox": HorizontalBox,
-        "VerticalBox": VerticalBox,
         "Button": Button,
         "Field": Field,
       },
@@ -28,10 +24,10 @@
     <div class="login-page">
       <div class="login-page__login-box">
 
-        <VerticalBox class="bg-main">
-        </VerticalBox>
+        <div class="vertical-box bg-main">
+        </div>
 
-        <VerticalBox>
+        <div class="vertical-box">
           <form class="form glass-form" action="{{ url_for('auth.register') }}" method="post">
             <h2 class="form__header-text">Register</h2>
 
@@ -63,7 +59,7 @@
               </a>
             </p>
           </form>
-        </VerticalBox>
+        </div>
 
       </div>
 
