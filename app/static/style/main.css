@@ -21,6 +21,7 @@ a {
 .login-page__login-box {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    min-width: 640px;
 }
 
 @media only screen and (max-width: 1440px) {
@@ -32,13 +33,8 @@ a {
 @media only screen and (max-width: 768px) {
     .login-page__login-box {
         grid-template-columns: 1fr;
-        height: auto;
-    }
-  }
-
-@media only screen and (max-width: 425px) {
-    .login-page__login-box {
         min-width: 320px;
+        height: auto;
     }
   }
 
