@@ -10,10 +10,7 @@ export default {
     template: /*html*/`
         <a :href="link">
             <li class="menu-item">
-                <span class="menu-item__icon-wrapper">
-                    <slot name="icon"></slot>
-                </span>
-
+                <slot name="icon"></slot>
                 <span class="menu-item__label">
                     {{ value }}
                 </span>
