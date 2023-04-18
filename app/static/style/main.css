@@ -68,6 +68,7 @@ a {
 }
 
 .form__register-text {
+    color: hsl(0, 0%, 55%)
 }
 
 .form__register-text-link {
@@ -179,3 +180,44 @@ path {
     fill: currentColor;
 }
 
+
+.home-page {
+    display: grid;
+    grid-template-columns: auto 1fr;
+}
+
+.side-bar {
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+    min-width: 240px;
+    height: 100vh;
+    background-color: hsl(221, 100%, 36%);
+    color: hsl(0, 0%, 90%);
+    font-size: .9rem;
+}
+
+.side-bar__header {
+    font-weight: 400;
+}
+
+.side-bar__logo {
+    padding: .35rem 1rem;
+}
+
+.menu-item {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 1rem;
+    padding: .4rem 1rem;
+}
+
+.menu-item:hover {
+    background-color: hsl(221, 100%, 16%);
+}
+
+.menu-item__icon {
+    height: 1.1rem;
+    width: 1.1rem;
+}
