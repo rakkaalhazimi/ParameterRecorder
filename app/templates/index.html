@@ -1,26 +1,59 @@
 {% extends "base.html" %}
 
-{% block content %}
-<h1>Parameter Recorder</h1>
+{% block script %}
+<script type="module">
+  import SideBar from "{{ url_for('static', filename='components/navbar/SideBar.js') }}"
+  const { createApp, ref } = Vue
 
-<p>Your Projects: </p>
-<a href="{{ url_for('base.create_project') }}">Create project</a>
+  const App = {
+      setup() {
+          let message = ref("hello vue")
+          return {message}
+      },
 
-<table>
-  <thead>
-    <th>Name</th>
-  </thead>
-  <tbody>
-    {% for project in projects %}
-      <tr>
-        <td>{{ project.name }}</td>
-        <td><a href="{{ url_for('base.view_project', project_id=project.id) }}">View</a></td>
-        <td><a href="{{ url_for('base.update_project', project_id=project.id) }}">Edit</a></td>
-        <td><a href="{{ url_for('base.delete_project', project_id=project.id) }}">Delete</a></td>
-      </tr>
-    {% endfor %}
-  </tbody>
-</table>
+      components: {
+        "SideBar": SideBar,
+      },
 
-<a href="{{ url_for('auth.logout') }}">Logout</a>
-{% endblock content %}
+      delimiters: ["[[", "]]"],
+  }
+
+  let template = /*html*/`
+    <div class="home-page">
+
+      <SideBar></SideBar>
+
+      <div class="home-page__content">
+        <h1>Parameter Recorder</h1>
+
+        <p>Your Projects: </p>
+        <a href="{{ url_for('base.create_project') }}">Create project</a>
+
+        <table>
+          <thead>
+            <th>Name</th>
+          </thead>
+          <tbody>
+            {% for project in projects %}
+              <tr>
+                <td>{{ project.name }}</td>
+                <td><a href="{{ url_for('base.view_project', project_id=project.id) }}">View</a></td>
+                <td><a href="{{ url_for('base.update_project', project_id=project.id) }}">Edit</a></td>
+                <td><a href="{{ url_for('base.delete_project', project_id=project.id) }}">Delete</a></td>
+              </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+
+        <a href="{{ url_for('auth.logout') }}">Logout</a>
+      </div>
+
+    </div>
+  `
+
+  App.template = template
+
+  let app = createApp(App)
+  app.mount("#app")
+</script>
+{% endblock script %}
