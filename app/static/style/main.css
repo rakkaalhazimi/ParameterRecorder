@@ -230,10 +230,12 @@ path {
 .project-card__header {
     display: flex;
     justify-content: space-between;
+    cursor: default;
 }
 
 .project-card__title {
     font-weight: 250;
+    cursor: text;
 }
 
 .project-card__delete-icon {
