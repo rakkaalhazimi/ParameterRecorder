@@ -171,6 +171,10 @@ path {
     grid-template-columns: auto 1fr;
 }
 
+.home-page__content {
+    padding: 2rem;
+}
+
 .side-bar {
     display: flex;
     flex-direction: column;
