@@ -3,6 +3,7 @@
 {% block script %}
 <script type="module">
   import SideBar from "{{ url_for('static', filename='components/navbar/SideBar.js') }}"
+  import ProjectCard from "{{ url_for('static', filename='components/cards/ProjectCard.js') }}"
   const { createApp, ref } = Vue
 
   const App = {
@@ -13,6 +14,7 @@
 
       components: {
         "SideBar": SideBar,
+        "ProjectCard": ProjectCard
       },
 
       delimiters: ["[[", "]]"],
@@ -28,6 +30,12 @@
 
         <p>Your Projects: </p>
         <a href="{{ url_for('base.create_project') }}">Create project</a>
+
+        <div class="home-page__projects">
+          {% for project in projects %}
+            <ProjectCard title="{{ project.name }}"></ProjectCard>
+          {% endfor %}
+        </div>
 
         <table>
           <thead>
