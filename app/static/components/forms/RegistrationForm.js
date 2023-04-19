@@ -46,7 +46,7 @@ export default {
                 </Field>
             </div>
 
-            <Button value="Login"></Button>
+            <Button value="Register"></Button>
             <p class="form__register-text">
                 Already have an account?
                 <a class="form__register-text-link" :href="loginEndpoint">
