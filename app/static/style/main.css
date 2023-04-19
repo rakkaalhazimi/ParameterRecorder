@@ -227,14 +227,25 @@ path {
     margin-top: auto;
 }
 
+.project-card__header {
+    display: flex;
+    justify-content: space-between;
+}
+
 .project-card__title {
     font-weight: 250;
+}
+
+.project-card__delete-icon {
+    height: 1rem;
+    width: 1rem;
 }
 
 .project-card__desc {
     color: hsl(0, 0%, 55%);
     font-size: .8rem;
 }
+
 
 .home-page__projects {
     display: grid;
