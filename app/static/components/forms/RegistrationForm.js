@@ -48,9 +48,9 @@ export default {
 
             <Button value="Login"></Button>
             <p class="form__register-text">
-                Don't have an account yet?
-                <a class="form__register-text-link" :href="registerEndpoint">
-                    <strong>Sign Up</strong>
+                Already have an account?
+                <a class="form__register-text-link" :href="loginEndpoint">
+                    <strong>Sign In</strong>
                 </a>
             </p>
         </form>
