@@ -22,13 +22,13 @@
     <div class="login-page">
       <div class="login-page__login-box">
 
-        <div class="vertical-box bg-main">
+        <div class="login-page__login-left-box bg-main">
         </div>
 
-        <div class="vertical-box">
+        <div class="login-page__login-right-box">
           <LoginForm
             loginEndpoint="{{ url_for('auth.login') }}"
-            registerEndpoint="{{ url_for('auth.register') }}"
+            registrationEndpoint="{{ url_for('auth.register') }}"
           >
           </LoginForm>
         </div>

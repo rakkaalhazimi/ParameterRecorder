@@ -19,16 +19,16 @@
   }
 
   let template = /*html*/`
-    <div class="login-page">
-      <div class="login-page__login-box">
+    <div class="registration-page">
+      <div class="registration-page__registration-box">
 
-        <div class="vertical-box bg-main">
+        <div class="registration-page__registration-left-box bg-main">
         </div>
 
-        <div class="vertical-box">
+        <div class="registration-page__registration-right-box">
           <RegistrationForm
             loginEndpoint="{{ url_for('auth.login') }}"
-            registerEndpoint="{{ url_for('auth.register') }}"
+            registrationEndpoint="{{ url_for('auth.register') }}"
           >
           </RegistrationForm>
         </div>
