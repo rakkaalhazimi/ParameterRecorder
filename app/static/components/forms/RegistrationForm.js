@@ -8,7 +8,7 @@ export default {
 
     props: {
         loginEndpoint: String,
-        registerEndpoint: String
+        registrationEndpoint: String
     },
 
     setup(props) {
@@ -23,7 +23,7 @@ export default {
     },
 
     template: /*html*/`
-        <form class="form glass-form" :action="loginEndpoint" method="post">
+        <form class="form glass-form" :action="registrationEndpoint" method="post">
             <h2 class="form__header-text">Register</h2>
 
             <div class="form__field-wrapper">

@@ -8,7 +8,7 @@ export default {
 
     props: {
         loginEndpoint: String,
-        registerEndpoint: String
+        registrationEndpoint: String
     },
 
     setup(props) {
@@ -43,7 +43,7 @@ export default {
             <Button value="Login"></Button>
             <p class="form__register-text">
                 Don't have an account yet?
-                <a class="form__register-text-link" :href="registerEndpoint">
+                <a class="form__register-text-link" :href="registrationEndpoint">
                     <strong>Sign Up</strong>
                 </a>
             </p>
