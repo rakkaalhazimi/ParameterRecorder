@@ -23,8 +23,9 @@ export default {
     template: /*html*/`
         <nav class="side-bar">
 
-            <div class="side-bar__logo">
-                <h3 class="side-bar__header">Parameter Recorder</h3>
+            <div class="side-bar__header">
+                <img class="side-bar__logo" src="/static/images/PRTS.webp" />
+                <h3 class="side-bar__title">Parameter Recorder</h3>
             </div>
 
             <ul class="side-bar__menu-list">
