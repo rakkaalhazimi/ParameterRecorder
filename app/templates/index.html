@@ -45,6 +45,7 @@
             <ProjectCard
               title="{{ project.name }}"
               viewLink="{{ url_for('base.view_project', project_id=project.id) }}"
+              editLink="{{ url_for('base.update_project', project_id=project.id) }}"
               deleteLink="{{ url_for('base.delete_project', project_id=project.id) }}"
             ></ProjectCard>
           {% endfor %}

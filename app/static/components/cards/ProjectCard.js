@@ -4,6 +4,7 @@ export default {
     props: {
         title: String,
         viewLink: String,
+        editLink: String,
         deleteLink: String
     },
 
@@ -12,6 +13,26 @@ export default {
     },
 
     setup(props) {
+
+        let title = props.title
+
+        function updateTitle(event) {
+            if (title !== event.target.innerText) {
+
+                // Send POST request with fetch API
+                // ref: https://stackoverflow.com/questions/46640024/how-do-i-post-form-data-with-fetch-api
+                let formData = new FormData()
+                formData.append("name", event.target.innerText)
+                fetch(props.editLink, {
+                    method: "POST",
+                    body: formData
+                })
+
+                title = event.target.innerText
+            }
+        }
+
+        return {updateTitle}
     },
 
     template: /*html*/`
@@ -20,7 +41,7 @@ export default {
             <!-- Prevent anchor tag click -->
             <!-- ref: https://stackoverflow.com/questions/1369035/how-do-i-prevent-a-parents-onclick-event-from-firing-when-a-child-anchor-is-cli -->
             <div class="project-card__header" @click.prevent>
-                <h3 class="project-card__title" contenteditable="true">{{ title }}</h3>
+                <h3 class="project-card__title" contenteditable="true" @focusout="updateTitle">{{ title }}</h3>
                 <a :href="deleteLink">
                     <TrashSolid class="project-card__delete-icon"></TrashSolid>
                 </a>
