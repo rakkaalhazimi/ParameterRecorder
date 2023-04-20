@@ -286,6 +286,10 @@ path {
     color:hsl(0, 0%, 30%);
 }
 
+.project-card__delete-icon:hover {
+    color: hsl(10, 100%, 36%);
+}
+
 .project-card__desc {
     color: hsl(0, 0%, 55%);
     font-size: .8rem;
