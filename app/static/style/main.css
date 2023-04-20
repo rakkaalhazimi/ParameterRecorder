@@ -190,6 +190,17 @@ path {
     background-color: hsl(0, 0%, 97%);
 }
 
+.home-page__content-header {
+    display: flex;
+    flex-direction: column;
+    row-gap: .5rem;
+    max-width: 600px;
+}
+
+.home-page__content-title {
+    font-weight: 400;
+}
+
 .side-bar {
     display: flex;
     flex-direction: column;
