@@ -40,8 +40,13 @@ export default {
             <div class="project-card">
             <!-- Prevent anchor tag click -->
             <!-- ref: https://stackoverflow.com/questions/1369035/how-do-i-prevent-a-parents-onclick-event-from-firing-when-a-child-anchor-is-cli -->
-            <div class="project-card__header" @click.prevent>
-                <h3 class="project-card__title" contenteditable="true" @focusout="updateTitle">{{ title }}</h3>
+            <div class="project-card__header">
+                <h3
+                    class="project-card__title"
+                    contenteditable="true"
+                    @focusout="updateTitle"
+                    @click.prevent
+                >{{ title }}</h3>
                 <a :href="deleteLink">
                     <TrashSolid class="project-card__delete-icon"></TrashSolid>
                 </a>

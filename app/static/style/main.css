@@ -269,7 +269,6 @@ path {
 .project-card__header {
     display: flex;
     justify-content: space-between;
-    cursor: default;
 }
 
 .project-card__title {
