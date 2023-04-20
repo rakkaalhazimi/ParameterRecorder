@@ -252,6 +252,7 @@ path {
 .project-card__delete-icon {
     height: 1rem;
     width: 1rem;
+    color:hsl(0, 0%, 30%);
 }
 
 .project-card__desc {
