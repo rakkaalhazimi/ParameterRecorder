@@ -176,6 +176,7 @@ path {
 .home-page {
     display: grid;
     grid-template-columns: auto 1fr;
+    font-size: .9rem;
 }
 
 .home-page__content {
