@@ -181,6 +181,7 @@ path {
 .home-page__content {
     display: flex;
     flex-direction: column;
+    align-items: start; /* Prevent anchor tag to fill the screen */
     row-gap: 2rem;
     padding: 2rem;
 }
