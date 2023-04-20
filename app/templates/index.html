@@ -28,9 +28,12 @@
       <SideBar></SideBar>
 
       <div class="home-page__content">
-        <h1>Projects</h1>
 
-        <p>Project acts as a folder that contains all of your records. Give it a name that correspond to your purpose.</p>
+        <div class="home-page__content-header">
+          <h1>Projects</h1>
+          <p>Project acts as a folder that contains all of your records. Give it a name that correspond to your purpose.</p>
+        </div>
+
         <CreateButton
           value="Create project"
           createEndpoint="{{ url_for('base.create_project') }}"
