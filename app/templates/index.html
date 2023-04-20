@@ -49,26 +49,7 @@
             ></ProjectCard>
           {% endfor %}
         </div>
-
-        <table>
-          <thead>
-            <th>Name</th>
-          </thead>
-          <tbody>
-            {% for project in projects %}
-              <tr>
-                <td>{{ project.name }}</td>
-                <td><a href="{{ url_for('base.view_project', project_id=project.id) }}">View</a></td>
-                <td><a href="{{ url_for('base.update_project', project_id=project.id) }}">Edit</a></td>
-                <td><a href="{{ url_for('base.delete_project', project_id=project.id) }}">Delete</a></td>
-              </tr>
-            {% endfor %}
-          </tbody>
-        </table>
-
-        <a href="{{ url_for('auth.logout') }}">Logout</a>
       </div>
-
     </div>
   `
 
