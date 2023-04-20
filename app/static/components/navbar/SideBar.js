@@ -2,6 +2,7 @@ import MenuItem from "../menu/MenuItem.js"
 import EnvelopeSolid from "../icons/EnvelopeSolid.js"
 import FolderSolid from "../icons/FolderSolid.js"
 import HouseSolid from "../icons/HouseSolid.js"
+import PowerOffSolid from "../icons/PowerOffSolid.js"
 
 export default {
     props: {
@@ -12,7 +13,8 @@ export default {
         "MenuItem": MenuItem,
         "EnvelopeSolid": EnvelopeSolid,
         "FolderSolid": FolderSolid,
-        "HouseSolid": HouseSolid
+        "HouseSolid": HouseSolid,
+        "PowerOffSolid": PowerOffSolid
     },
 
     setup(props) {
@@ -34,6 +36,11 @@ export default {
                 <MenuItem value="Projects" link="#">
                     <template v-slot:icon>
                         <FolderSolid class="menu-item__icon"></FolderSolid>
+                    </template>
+                </MenuItem>
+                <MenuItem value="Logout" link="#">
+                    <template v-slot:icon>
+                        <PowerOffSolid class="menu-item__icon"></PowerOffSolid>
                     </template>
                 </MenuItem>
             </ul>
