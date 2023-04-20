@@ -4,6 +4,7 @@
 <script type="module">
   import SideBar from "{{ url_for('static', filename='components/navbar/SideBar.js') }}"
   import ProjectCard from "{{ url_for('static', filename='components/cards/ProjectCard.js') }}"
+  import CreateButton from "{{ url_for('static', filename='components/buttons/CreateButton.js') }}"
   const { createApp, ref } = Vue
 
   const App = {
@@ -14,7 +15,8 @@
 
       components: {
         "SideBar": SideBar,
-        "ProjectCard": ProjectCard
+        "ProjectCard": ProjectCard,
+        "CreateButton": CreateButton,
       },
 
       delimiters: ["[[", "]]"],
@@ -29,7 +31,11 @@
         <h1>Projects</h1>
 
         <p>Project acts as a folder that contains all of your records. Give it a name that correspond to your purpose.</p>
-        <a href="{{ url_for('base.create_project') }}">Create project</a>
+        <CreateButton
+          value="Create project"
+          createEndpoint="{{ url_for('base.create_project') }}"
+        >
+        </CreateButton>
 
         <div class="home-page__projects">
           {% for project in projects %}

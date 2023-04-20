@@ -96,6 +96,13 @@ a {
     color: hsl(0, 0%, 90%);
 }
 
+.create-btn {
+    padding: .5rem 1rem;
+    border-radius: 16px;
+    background-color: hsl(221, 100%, 36%);
+    color: hsl(0, 0%, 90%);
+}
+
 .field__input {
     padding: .5rem;
     width: 100%;
